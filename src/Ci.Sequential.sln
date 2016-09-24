@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ci.Sequential.NetCore", "RT.Comb\Ci.Sequential.NetCore.xproj", "{9C86CCF0-2BE9-4AB2-9DCA-146392285190}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ci.Sequential.NetCore", "Ci.Sequential.NetCore\Ci.Sequential.NetCore.xproj", "{9C86CCF0-2BE9-4AB2-9DCA-146392285190}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ci.Sequential", "Ci.Sequential\Ci.Sequential.csproj", "{B13B764E-29B7-4FE5-9B61-D627ABD79EF9}"
 EndProject
