@@ -14,10 +14,10 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Ci.Sequential.NetCore
-{
-    using System;
+using System;
 
+namespace Ci.Sequential.Core
+{
     /// <summary>
     /// Common constants and functions for both COMB implementations.
     /// </summary>

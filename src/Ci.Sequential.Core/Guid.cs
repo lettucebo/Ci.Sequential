@@ -14,15 +14,18 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Ci.Sequential.NetCore
-{
-    using System;
+using System;
 
+namespace Ci.Sequential.Core
+{
     /// <summary>
-    /// Static methods to set and retrieve the timestamp for a byte-order variant COMB Guid.
+    /// Static methods to set and retrieve the timestamp for an MSSQL-order variant COMB Guid.
     /// </summary>
-    public static class Byte
+    public static class Guid
     {
+
+        // Various constants
+        private const int StartIndexSqlServer = 10;
 
         /// <summary>
         /// Returns a new Guid COMB, consisting of a random Guid combined with the current UTC timestamp.
@@ -46,14 +49,7 @@ namespace Ci.Sequential.NetCore
         {
             var bytes = value.ToByteArray();
             var dtbytes = Utilities.DateTimeToBytes(timestamp);
-
-            // Nybble 6-9 move left to 5-8. Nybble 9 is set to "4" (the version)
-            dtbytes[2] = (byte)((byte)(dtbytes[2] << 4) | (byte)(dtbytes[3] >> 4));
-            dtbytes[3] = (byte)((byte)(dtbytes[3] << 4) | (byte)(dtbytes[4] >> 4));
-            dtbytes[4] = (byte)(0x40 | (byte)(dtbytes[4] & 0x0F));
-
-            // Overwrite the first six bytes
-            Array.Copy(dtbytes, 0, bytes, 0, Utilities.NumDateBytes);
+            Array.Copy(dtbytes, 0, bytes, StartIndexSqlServer, Utilities.NumDateBytes);
             return new System.Guid(bytes);
         }
 
@@ -64,12 +60,7 @@ namespace Ci.Sequential.NetCore
         {
             var bytes = comb.ToByteArray();
             var dtbytes = new byte[Utilities.NumDateBytes];
-            Array.Copy(bytes, 0, dtbytes, 0, Utilities.NumDateBytes);
-
-            // Move nybbles 5-8 to 6-9, overwriting the existing 9 (version "4")
-            dtbytes[4] = (byte)((byte)(dtbytes[3] << 4) | (byte)(dtbytes[4] & 0x0F));
-            dtbytes[3] = (byte)((byte)(dtbytes[2] << 4) | (byte)(dtbytes[3] >> 4));
-            dtbytes[2] = (byte)(dtbytes[2] >> 4);
+            Array.Copy(bytes, StartIndexSqlServer, dtbytes, 0, Utilities.NumDateBytes);
             return Utilities.BytesToDateTime(dtbytes);
         }
 
