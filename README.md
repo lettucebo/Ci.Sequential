@@ -17,27 +17,31 @@ Revision History
 
 Using this Library
 ====================
-This library includes two namespaces:
+Code example:
+``` csharp
+var sequentialGuid = GuidSequential.NewGuid();
+var emptyGuid = GuidSequential.Empty;
+```
+OR
+``` csharp
+var sequentialGuid = Ci.Sequential.Guid.Create();
+var emptyGuid = Guid.Empty;
+```
 
- - `RT.CombByteOrder`: COMB variant supporting byte-order sorting, such as PostgreSQL
- - `RT.CombSqlOrder`: COMB variant supporting SQL Server sorting.
+This library includes one namespaces:
 
-Both of these have a static class called `Comb` that contains the core functions to create COMB Guids and extract dates from them. Both also have a class called `CombProvider` that implements `RT.ICombProvider`.
+ - `Ci.Sequential`: COMB variant supporting SQL Server sorting.
 
-The `ICombProvider` interface is identical to that of the static classes. So, regardless which variant you use and whether you use the static classes or a provider instance, there are really only two methods to learn:
+There are really only two methods to learn:
 
  - `Create()`, with overloads that take no arguments, a `Guid`, a `DateTime`, or both. All return a COMB Guid.
  - `GetTimestamp()`, which takes an existing COMB `Guid` and returns the embedded `DateTime` value.
-
-While the static classes are more convenient, the `ICombProvider` interface is useful if you need to inject which variant to use rather than baking it in.
-
-(I originally went down the path of having extension methods as well, but the semantics really don't work well, so I dropped them.)
 
 When generating values, note that on Windows platforms, while a COMB's time resolution is around 3ms, the Windows system timer only has a resolution of around 15ms.
 
 A NuGet package is available:
 
-https://www.nuget.org/packages/RT.Comb/
+https://www.nuget.org/packages/Ci.Sequential/
 
 Background
 ==========
