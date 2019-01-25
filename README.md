@@ -18,6 +18,7 @@ Revision History
 Using this Library
 ====================
 A NuGet package is available, targeted for .NET Standard 1.3 or .NET Framework 4.0
+
 https://www.nuget.org/packages/Ci.Sequential/
 
 Code example:
