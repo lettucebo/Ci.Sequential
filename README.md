@@ -17,6 +17,9 @@ Revision History
 
 Using this Library
 ====================
+A NuGet package is available, targeted for .NET Standard 1.3 or .NET Framework 4.0
+https://www.nuget.org/packages/Ci.Sequential/
+
 Code example:
 ``` csharp
 var sequentialGuid = GuidSequential.NewGuid();
@@ -38,10 +41,6 @@ There are really only two methods to learn:
  - `GetTimestamp()`, which takes an existing COMB `Guid` and returns the embedded `DateTime` value.
 
 When generating values, note that on Windows platforms, while a COMB's time resolution is around 3ms, the Windows system timer only has a resolution of around 15ms.
-
-A NuGet package is available:
-
-https://www.nuget.org/packages/Ci.Sequential/
 
 Background
 ==========
