@@ -4,4 +4,6 @@
     <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
 
+  <Import Project="..\Ci.Sequential.Shared\Ci.Sequential.Shared.projitems" Label="Shared" />
+
 </Project>

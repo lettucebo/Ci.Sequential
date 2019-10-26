@@ -28,7 +28,7 @@ var emptyGuid = GuidSequential.Empty;
 ```
 OR
 ``` csharp
-var sequentialGuid = Ci.Sequential.Guid.Create();
+var sequentialGuid = SeqGuid.Create();
 var emptyGuid = Guid.Empty;
 ```
 

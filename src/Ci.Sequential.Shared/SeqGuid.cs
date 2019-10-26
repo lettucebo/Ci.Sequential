@@ -14,14 +14,14 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-
-namespace Ci.Sequential.Core
+namespace Ci.Sequential
 {
+    using System;
+
     /// <summary>
     /// Static methods to set and retrieve the timestamp for an MSSQL-order variant COMB Guid.
     /// </summary>
-    public static class Guid
+    public static class SeqGuid
     {
 
         // Various constants

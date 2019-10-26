@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27625.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29311.281
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ci.Sequential", "Ci.Sequential\Ci.Sequential.csproj", "{B13B764E-29B7-4FE5-9B61-D627ABD79EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ci.Sequential.Core", "Ci.Sequential.Core\Ci.Sequential.Core.csproj", "{7B1DF36D-38D6-41B8-A214-359C7ECE072B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ci.Sequential.Core", "Ci.Sequential.Core\Ci.Sequential.Core.csproj", "{7B1DF36D-38D6-41B8-A214-359C7ECE072B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Ci.Sequential.Shared", "Ci.Sequential.Shared\Ci.Sequential.Shared.shproj", "{CF76686B-02AA-4F33-861D-0A51894AC2CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ci.Sequential.Core.Test", "Ci.Sequential.Core.Test\Ci.Sequential.Core.Test.csproj", "{2D45E24A-B669-4D47-BB6F-5AA79EC08118}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Ci.Sequential.Shared\Ci.Sequential.Shared.projitems*{b13b764e-29b7-4fe5-9b61-d627abd79ef9}*SharedItemsImports = 4
+		Ci.Sequential.Shared\Ci.Sequential.Shared.projitems*{cf76686b-02aa-4f33-861d-0a51894ac2ce}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +29,10 @@ Global
 		{7B1DF36D-38D6-41B8-A214-359C7ECE072B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1DF36D-38D6-41B8-A214-359C7ECE072B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1DF36D-38D6-41B8-A214-359C7ECE072B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D45E24A-B669-4D47-BB6F-5AA79EC08118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D45E24A-B669-4D47-BB6F-5AA79EC08118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D45E24A-B669-4D47-BB6F-5AA79EC08118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D45E24A-B669-4D47-BB6F-5AA79EC08118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
