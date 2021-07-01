@@ -24,11 +24,6 @@ Code example:
 var sequentialGuid = GuidSequential.NewGuid();
 var emptyGuid = GuidSequential.Empty;
 ```
-OR
-``` csharp
-var sequentialGuid = SeqGuid.Create();
-var emptyGuid = Guid.Empty;
-```
 
 This library includes one namespaces:
 
