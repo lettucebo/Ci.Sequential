@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,17 +10,11 @@ namespace Ci.Sequential.Test
     public class UnitTest
     {
         [TestMethod]
-        public void Id1ShouldLessThanId2()
+        public void IdShouldNotBeEmpty()
         {
-            var id1 = GuidSequential.NewGuid();
-            var id2 = GuidSequential.NewGuid();
+            var id = GuidSequential.NewGuid();
 
-            Console.WriteLine(id1);
-            Console.WriteLine(id2);
-
-            var result = id1.CompareTo(id2);
-
-            result.Should().BeLessThan(0);
+            id.Should().NotBeEmpty();
         }
     }
 }
