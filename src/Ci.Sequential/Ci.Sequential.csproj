@@ -5,7 +5,7 @@
     <Authors>Money Yu</Authors>
     <Company>Money</Company>
     <Description>Library to create and use COMB (timestamped sequential) GUID variants for Microsoft SQL Server and PostgreSQL. See the GitHub site for more details.</Description>
-    <Version>2.4.0</Version>
+    <Version>3.0.0</Version>
     <PackageIconUrl>https://i.imgur.com/3xZ4Cdx.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/lettucebo/Ci.Result</PackageProjectUrl>
   </PropertyGroup>

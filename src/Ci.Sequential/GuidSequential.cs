@@ -7,11 +7,13 @@ namespace Ci.Sequential
     /// </summary>
     public static class GuidSequential
     {
+        private static readonly SeqGuid SeqGuid = new SeqGuid();
+
         /// <summary>
         /// Initializes a new instance of the sequential <see cref="T:System.Guid" /> structure.
         /// </summary>
         /// <returns></returns>
-        public static System.Guid NewGuid() => SeqGuid.Create(System.Guid.NewGuid(), DateTime.UtcNow);
+        public static System.Guid NewGuid() => SeqGuid.Next();
 
         /// <summary>
         /// A read-only instance of the <see cref="T:System.Guid" /> structure whose value is all zeros.

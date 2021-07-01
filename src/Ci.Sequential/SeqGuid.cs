@@ -14,6 +14,8 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using System.Threading;
+
 namespace Ci.Sequential
 {
     using System;
@@ -21,49 +23,34 @@ namespace Ci.Sequential
     /// <summary>
     /// Static methods to set and retrieve the timestamp for an MSSQL-order variant COMB Guid.
     /// </summary>
-    public static class SeqGuid
+    /// <remarks>https://github.com/dotnet/efcore/blob/main/src/EFCore/ValueGeneration/SequentialGuidValueGenerator.cs</remarks>
+    public class SeqGuid
     {
-
-        // Various constants
-        private const int StartIndexSqlServer = 10;
-
-        /// <summary>
-        /// Returns a new Guid COMB, consisting of a random Guid combined with the current UTC timestamp.
-        /// </summary>
-        public static System.Guid Create() => Create(System.Guid.NewGuid(), DateTime.UtcNow);
-
-        /// <summary>
-        /// Returns a new Guid COMB, consisting of the specified Guid combined with the current UTC timestamp.
-        /// </summary>
-        public static System.Guid Create(System.Guid value) => Create(value, DateTime.UtcNow);
-
-        /// <summary>
-        /// Returns a new Guid COMB, consisting of a random Guid combined with the provided timestamp.
-        /// </summary>
-        public static System.Guid Create(DateTime timestamp) => Create(System.Guid.NewGuid(), timestamp);
-
+        private long _counter = DateTime.UtcNow.Ticks;
         /// <summary>
         /// Returns a new Guid COMB, consisting of the provided Guid and provided timestamp.
         /// </summary>
-        public static System.Guid Create(System.Guid value, DateTime timestamp)
+        internal System.Guid Next()
         {
-            var bytes = value.ToByteArray();
-            var dtbytes = Utilities.DateTimeToBytes(timestamp);
-            Array.Copy(dtbytes, 0, bytes, StartIndexSqlServer, Utilities.NumDateBytes);
-            return new System.Guid(bytes);
-        }
+            var guidBytes = Guid.NewGuid().ToByteArray();
+            var counterBytes = BitConverter.GetBytes(Interlocked.Increment(ref _counter));
 
-        /// <summary>
-        /// Returns the timestamp previously stored in a COMB Guid value.
-        /// </summary>
-        public static DateTime GetTimestamp(System.Guid comb)
-        {
-            var bytes = comb.ToByteArray();
-            var dtbytes = new byte[Utilities.NumDateBytes];
-            Array.Copy(bytes, StartIndexSqlServer, dtbytes, 0, Utilities.NumDateBytes);
-            return Utilities.BytesToDateTime(dtbytes);
-        }
+            if (!BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(counterBytes);
+            }
 
+            guidBytes[08] = counterBytes[1];
+            guidBytes[09] = counterBytes[0];
+            guidBytes[10] = counterBytes[7];
+            guidBytes[11] = counterBytes[6];
+            guidBytes[12] = counterBytes[5];
+            guidBytes[13] = counterBytes[4];
+            guidBytes[14] = counterBytes[3];
+            guidBytes[15] = counterBytes[2];
+
+            return new Guid(guidBytes);
+        }
     }
 
 }
