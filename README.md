@@ -1,3 +1,8 @@
+## Ci.Sequential
+
+
+[![Nuget](https://img.shields.io/nuget/dt/Ci.Sequential?label=Nuget)](https://www.nuget.org/packages/Ci.Sequential/)
+
 Purpose
 =======
 Invented by Jimmy Nilsson and first described in an article for InformIT in 2002, a COMB is a GUID with an embedded date/time value, making the values sequential over time.

@@ -1,0 +1,52 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- refs/tags/*
+
+pool:
+  name: Hosted Ubuntu 1604
+variables:
+  BuildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: '**/*[Tt]est/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-restore'
+
+- task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 4.8.1'
+  inputs:
+    versionSpec: 4.8.1
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Ci.Result'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Ci.Result.csproj'
+    versioningScheme: 'off'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push Ci.Result'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'Nuget.org'
