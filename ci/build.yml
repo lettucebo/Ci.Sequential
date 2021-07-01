@@ -14,8 +14,8 @@ steps:
     SonarCloud: 'SonarCloud'
     organization: 'lettucebo'
     scannerMode: 'MSBuild'
-    projectKey: 'Ci.Result'
-    projectName: 'Ci.Result'
+    projectKey: 'Ci.Sequential'
+    projectName: 'Ci.Sequential'
 
 - task: DotNetCoreCLI@2
   displayName: Restore
