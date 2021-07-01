@@ -2,7 +2,7 @@ using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ci.Sequential.Core.Test
+namespace Ci.Sequential.Test
 {
     [TestClass]
     public class UnitTest
