@@ -1,6 +1,6 @@
-## Ci.Sequential
+# Ci.Sequential
 
-
+[![Build Status](https://dev.azure.com/lettucebo/Github.Build/_apis/build/status/Ci.Sequential/Ci.Sequential.Build?branchName=master)](https://dev.azure.com/lettucebo/Github.Build/_build/latest?definitionId=23&branchName=master)
 [![Nuget](https://img.shields.io/nuget/dt/Ci.Sequential?label=Nuget)](https://www.nuget.org/packages/Ci.Sequential/)
 
 Purpose
@@ -13,16 +13,9 @@ Status
 ======
 While I've created code to do this before, this library is my attempt to clean it up, add PostgreSQL support, and make it available as open source. The interface is still a bit in flux as I work with it, so please bear with me. Suggestions welcome.
 
-Revision History
-================
- - 1.1		2016-01		First release
- - 1.2		2016-01		Clean up, add unit tests
- - 1.3		2016-01-18	Major revision of interface
- - 1.4      2016-08-10  Upgrade to .NETCore 1.0, switch tests to Xunit
-
 Using this Library
 ====================
-A NuGet package is available, targeted for .NET Standard 1.3 (above) or .NET Framework 4.0 (above)
+A NuGet package is available, targeted for .NET Standard 1.3 (above)
 
 https://www.nuget.org/packages/Ci.Sequential/
 
